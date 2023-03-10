@@ -23,7 +23,6 @@ const createTask = (e) => {
     titleTask.innerText = value;
     console.log(checkComplete());
 
-
     const content = `<i class="fas fa-trash-alt trashIcon icon"></i>`;
     //task.innerHTML = content;
     // Add child element to parent element
@@ -41,5 +40,15 @@ btn.addEventListener('click', createTask);
 const checkComplete = () => {
     const i = document.createElement('i');
     i.classList.add('far', 'fa-check-square', 'icon');
+    i.addEventListener('click', completeTask);
     return i;
+}
+
+// Arrow function para cambiar el icono y color para tarea completada
+const completeTask = (event) => {
+    console.log(event.target);
+    const element = event.target;
+    element.classList.toggle('fas');
+    element.classList.toggle('far');
+    element.classList.toggle('completeIcon');
 }
