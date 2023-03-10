@@ -14,22 +14,18 @@
         const task = document.createElement('li');
         const taskContent = document.createElement('div');
         const titleTask = document.createElement('span');
-        const trashIcon = document.createElement('i');
 
         // Add classes to child element
         task.classList.add('card');
         titleTask.classList.add('task');
-        trashIcon.classList.add('fas', 'fa-trash-alt', 'trashIcon', 'icon');
 
         // Modify values
         titleTask.innerText = value;
 
-        const content = `<i class="fas fa-trash-alt trashIcon icon"></i>`;
-        //task.innerHTML = content;
         // Add child element to parent element
         list.appendChild(task);
         task.appendChild(taskContent);
-        task.appendChild(trashIcon);
+        task.appendChild(deleteIcon());
         taskContent.appendChild(checkComplete());
         taskContent.appendChild(titleTask);
         //console.log(content);
@@ -52,5 +48,19 @@
         element.classList.toggle('fas');
         element.classList.toggle('far');
         element.classList.toggle('completeIcon');
+    };
+
+    // Arrow function para delete icon
+    const deleteIcon = (event) => {
+        const i = document.createElement('i');
+        i.classList.add('fas', 'fa-trash-alt', 'trashIcon', 'icon');
+        i.addEventListener('click', deleteTask);
+        return i;
+    };
+
+    const deleteTask = (event) => {
+        // Seleccionar el elemento padre del target
+        const parent = event.target.parentElement;
+        parent.remove();
     };
 })();
