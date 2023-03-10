@@ -12,10 +12,12 @@ const createTask = (e) => {
     const task = document.createElement('li');
     const taskContent = document.createElement('div');
     const titleTask = document.createElement('span');
+    const trashIcon = document.createElement('i');
 
     // Add classes to child element
     task.classList.add('card');
     titleTask.classList.add('task');
+    trashIcon.classList.add('fas', 'fa-trash-alt', 'trashIcon', 'icon');
 
     // Modify values
     titleTask.innerText = value;
@@ -27,6 +29,7 @@ const createTask = (e) => {
     // Add child element to parent element
     list.appendChild(task);
     task.appendChild(taskContent);
+    task.appendChild(trashIcon);
     taskContent.appendChild(checkComplete());
     taskContent.appendChild(titleTask);
     //console.log(content);
